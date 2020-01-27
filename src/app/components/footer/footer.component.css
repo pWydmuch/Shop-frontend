@@ -1,0 +1,12 @@
+#page-content {
+    flex: 1 0 auto;
+  }
+  
+  #sticky-footer {
+    flex-shrink: none;
+  }
+
+  footer{
+    height: 60px;
+  }
+  /* .footer{position:fixed; bottom:0; z-index:100000} */
