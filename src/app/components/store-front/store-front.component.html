@@ -1,6 +1,6 @@
 <div *ngIf="products"class="row">
   <div class="small-12 medium-8 columns">
-    <h3>Najlepsze częsci samochodowe w kraju</h3>
+    <h3>Najlepsze części samochodowe w kraju</h3>
 
     <label>Wybierz kategorie
       <select (input)="changeCat($event)">
@@ -13,7 +13,7 @@
           class="product-container">
           <div class="row">
             <div class="medium-3 columns text-center">
-              <img src="{{product.link}}"
+              <img [src]="product.link"
                    class="product_image"/>
             </div>
             <div class="medium-9 columns">

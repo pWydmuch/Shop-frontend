@@ -55,18 +55,10 @@ export class ShoppingCartService {
     };
   }
 
-  // getCart(){
-  //   if(this.cart) {
-  //     return Observable.of(this.cart)
-  //   } else { 
-  //     return this.http.get('http://someurl:1234/someapi/somevalue')
-  //       .do(res => this.categories = res.json().response)
-  //       .map(res => res.json().response)
-  //   }
-  // }
+ 
 
-  public get(): Observable<ShoppingCart> {
-    return this.http.get<ShoppingCart>(`${this.basicUrl}/cart`, this.httpOptions);
+  public get(): Observable<any> {
+    return this.http.get<any>(`${this.basicUrl}/cart`, this.httpOptions);
     // return null;
   }
 

@@ -25,7 +25,7 @@
     <div class="row checkout_row"
         *ngFor="let item of cartItems">
       <div class="medium-2 columns text-center">
-          <img src="{{item.product.link}}"
+          <img [src]="item.product.link"
                 class="product_image"/>
               
       </div>

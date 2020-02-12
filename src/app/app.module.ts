@@ -17,6 +17,7 @@ import { StoreFrontComponent } from "./components/store-front/store-front.compon
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TranslatePipe } from './translate.pipe';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
  
@@ -28,7 +29,8 @@ import { TranslatePipe } from './translate.pipe';
     OrderConfirmationComponent,
     NavbarComponent,
     FooterComponent,
-    TranslatePipe
+    TranslatePipe,
+    LoginComponent
   ],
   imports: [
     HttpClientModule,
