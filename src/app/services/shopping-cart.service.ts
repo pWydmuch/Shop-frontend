@@ -33,7 +33,7 @@ export class ShoppingCartService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json',
                                 'JSESSIONID' : `${this.sessionId}`,
                                   }),
-    observe: 'response',
+    observe: 'response' as 'body',
     withCredentials: true
   };
 
@@ -46,11 +46,14 @@ export class ShoppingCartService {
   }
 
   setHeaders(){
+
+  
+
     this.httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json',
                                   'JSESSIONID' : `${this.sessionId}`,
                                     }),
-      observe: 'response',
+      observe: 'response' as 'body',
       withCredentials: true
     };
   }

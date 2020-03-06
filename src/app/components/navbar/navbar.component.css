@@ -1,4 +1,3 @@
-/* 
 
 .navbar-nav > li > a {padding-top:0px !important; padding-bottom:0px !important;}
 .navbar {min-height:20px !important}
@@ -37,10 +36,10 @@ a {
 
 a:hover{
     font-weight: 700;
-} */ 
+}
 
 
-.foundation-5-top-bar {
+/* .foundation-5-top-bar {
     color: #fefefe;
   }
   
@@ -77,6 +76,6 @@ a:hover{
     font-weight: 600;
     font-size: 30px;
     margin-left: 20px;
-  }
+  } */
   
   

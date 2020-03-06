@@ -1,12 +1,13 @@
-.product-list {
+/* .product-list {
   list-style-type: none;
   margin: 0;
 }
 
 .product-container {
+
     padding: 2rem 3rem 0 0;
     position: relative;
-    border: 1px solid #EFEFEF;
+    border: 3px solid red;
     margin: 10px 0;
 
 }
@@ -22,4 +23,17 @@
 .product-container   .product_price {
   float: right;
   margin-top: 1rem;
+} */
+
+.container{
+  border: 3px solid red;
 }
+
+.container .product_image {
+  max-height: 250px;
+}
+
+.container   .product_price {
+  /* float: right; */
+  margin-top: 1rem;
+} 
