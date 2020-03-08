@@ -18,12 +18,12 @@
             </div>
             <div class="medium-9 columns">
               <h4>
-                <span class="text--bold js-product-name">{{product.name}}</span>
+                <span class="font-weight-bold js-product-name">{{product.name}}</span>
                 <small class="product_price js-product-price">{{product.price | currency:'PLN':true}} </small>
               </h4>
               <p class="js-product-desc">{{product.description}}</p>
               <!d-- <p>
-                <span class="text--bold">ingredients:</span>
+                <span class="font-weight-bold">ingredients:</span>
                 <br/>
                 <span *ngFor="let ingredient of product.ingredients ">
                   {{ingredient.name}} ({{ingredient.percentage}}%)
@@ -50,55 +50,53 @@
 </div> -->
 
 
-<div *ngIf="products"class="row">
-  <div class="small-12 medium-8 columns">
-    <h3>Najlepsze części samochodowe w kraju</h3>
+<div *ngIf="products" class="mt-3 container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      <h3>Najlepsze części samochodowe w kraju</h3>
 
-    <label>Wybierz kategorie
-      <select (input)="changeCat($event)">
-        <option  *ngFor="let cat of categories"  value="{{cat}}">{{cat | translate}}</option>
-      </select>
-    </label>
+      <label>Wybierz kategorie
+        <select class="custom-select" (input)="changeCat($event)">
+          <option *ngFor="let cat of categories" value="{{cat}}">{{cat | translate}}</option>
+        </select>
+      </label>
 
-    <ul class="product-list">
-      <li *ngFor="let product of productsCat"
-          class="container">
-          <div class="row">
-            <div class="col-sm-3 text-center">
-              <img [src]="product.link"
-                   class="product_image"/>
-            </div>
-            <div class="col-md-9">
-              <h4>
-                <span class="text--bold js-product-name">{{product.name}}</span>
-                <small class="product_price js-product-price">{{product.price | currency:'PLN':true}} </small>
-              </h4>
-              <p class="js-product-desc">{{product.description}}</p>
-              <!-- <p>
-                <span class="text--bold">ingredients:</span>
+      <ul class="list-unstyled">
+        <li *ngFor="let product of productsCat" class="container">
+          <div class="card mt-3">
+            <div class="row">
+
+              <div class="col-md-4 text-center my-2" >
+                <img [src]="product.link" class="product_image" />
+              </div>
+              <div class="col-md-8 prod-descript d-flex align-content-between flex-column  ">
+                <h4 class="mt-2 ml-2 d-flex justify-content-between">
+                  <span class="font-weight-bold">{{product.name}}</span>
+                  <small class="product_price mr-2">{{product.price | toZloty}} </small>
+                </h4>
+                <p>{{product.description}}</p>
+                <!-- <p>
+                <span class="font-weight-bold">ingredients:</span>
                 <br/>
                 <span *ngFor="let ingredient of product.ingredients ">
                   {{ingredient.name}} ({{ingredient.percentage}}%)
                   <br/>
                 </span>
               </p> -->
-              <p *ngIf="cart">
-                <button type="button"
-                        class="button success large js-btn-add"
-                        (click)="addProductToCart(product, 1)">Dodaj do koszyka</button>
-                <button type="button"
-                        class="button small js-btn-remove"
-                        *ngIf="productInCart(product)"
-                        (click)="removeProductFromCart(product, 1)">Usuń z koszyka</button>
-              </p>
+                <div *ngIf="cart" class="d-flex justify-content-center mb-3">
+                  <button type="button" class="btn btn-success" (click)="addProductToCart(product, 1)">Dodaj do
+                    koszyka</button>
+                  <button type="button" class="btn btn-danger btn-sm" *ngIf="productInCart(product)"
+                    (click)="removeProductFromCart(product, 1)">Usuń z koszyka</button>
+                </div>
+              </div>
             </div>
           </div>
-      </li>
-    </ul>
-  </div>
-  <div class="small-12 medium-4 columns">
-    <app-shopping-cart></app-shopping-cart>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <app-shopping-cart (onCartEmpted)="doIt($event)"></app-shopping-cart>
+    </div>
   </div>
 </div>
-
-

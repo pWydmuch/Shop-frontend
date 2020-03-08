@@ -1,40 +1,41 @@
-<div class="row">
-  <div class="small-12 columns">
-    <h3>
-      <!-- <i class="material-icons">Koszyk</i> -->
-      Twój koszyk zakupów
-    </h3>
+<div class="container">
+  <div class="row">
+    <div class="col text-center">
+      <h3>
+        <!-- <i class="material-icons">Koszyk</i> -->
+        Twój koszyk zakupów
+      </h3>
+    </div>
+  </div>
+  <br />
+  <div *ngIf="cart" class="row">
+    <div class="col text-center">
+      <h5>
+        Wszystkich produktów : {{itemCount}}
+        <p *ngIf="cart" class="">{{cart.amountTotal | toZloty}} </p>
+      </h5>
+    </div>
   </div>
 </div>
-<br/>
-<div *ngIf="cart" class="row">
-  <div class="small-12 columns">
-    <h5>
-      Wszystkich produktów : {{itemCount}}:
-      <span *ngIf="cart" class="text--red text--bold js-cart-total">{{cart.amountTotal | currency:'PLN':true}}</span>
-    </h5>
+<br />
+<div class="container">
+  <div class="row">
+    <div class="col text-center">
+      <a> <button class="btn btn-success w-100" [attr.disabled]="itemCount === 0 ? true : null" routerLink="/checkout">Przejdź do
+        zakupu</button></a>
+    </div>
   </div>
-</div>
-<br/>
-<div class="row">
-  <div class="small-12 columns">
-    <a class="success button large expanded"
-       [attr.disabled]="itemCount === 0 ? true : null"
-       routerLink="/checkout">Przejdź do zakupu</a>
+  <div class="row">
+    <div class="col text-center">
+      or
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="small-12 columns text-center">
-    or
-  </div>
-</div>
-<div class="row">
-  <div class="small-12 columns">
-    <button type="button"
-            class="secondary button small expanded js-btn-empty-cart"
-            (click)="emptyCart()"
-            [attr.disabled]="itemCount === 0 ? true : null">
-      Empty shopping basket
-    </button>
+  <div class="row">
+    <div class="col text-center mb-4">
+      <button type="button" class="btn btn-danger btn-sm w-100" (click)="emptyCart()"
+        [attr.disabled]="itemCount === 0 ? true : null">
+        Opróżnij koszyk
+      </button>
+    </div>
   </div>
 </div>

@@ -42,7 +42,6 @@ export class StoreFrontComponent implements OnInit, AfterViewInit {
   doCart(cart){
     
     this.cart = cart.body;
-
     this.child.getCart();
     // this.cart= cart;
   }

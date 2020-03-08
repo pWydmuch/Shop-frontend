@@ -10,9 +10,10 @@ import { ShoppingCartComponent } from "./components/shopping-cart/shopping-cart.
 import { StoreFrontComponent } from "./components/store-front/store-front.component";
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { TranslatePipe } from './translate.pipe';
+import { TranslatePipe } from './pipes/translate.pipe';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { ToZlotyPipe } from './pipes/to-zloty.pipe';
 
 @NgModule({
  
@@ -26,7 +27,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     FooterComponent,
     TranslatePipe,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    ToZlotyPipe
   ],
   imports: [
     HttpClientModule,

@@ -1,74 +1,72 @@
-<div class="row">
-  <div class="medium-4 columns">
-    <h2>
-      <!-- <i class="material-icons">shopping_basket</!--> 
-      <span>Zawartość koszyka</span>
-    </h2>
-  </div>
-  <div *ngIf="cart" class="medium-4 columns text-right">
-    <h4>
-      Cała kwota
-      <span class="text--red text--bold js-gross-total">{{cart.amountTotal | currency:'PLN':true}}</span>
-    </h4>
-  </div>
-  <div *ngIf="cart" class="medium-4 columns text-right">
-    <h5 class="text--red"
-       *ngIf="!cart.deliveryId">Wybierz opcje dostawy</h5>
-    <a class="success button large"
-       *ngIf="cart.deliveryId"
-       routerLink="/confirmed">Zapłać</a>
-  </div>
-  <hr/>
-</div>
-<div class="row">
-  <div class="medium-8 columns">
-    <div class="row checkout_row"
-        *ngFor="let item of cartItems">
-      <div class="medium-2 columns text-center">
-          <img [src]="item.product.link"
-                class="product_image"/>
-              
-      </div>
-      <div class="medium-5 columns">
-          <span class="text--bold js-product-name">{{item.product.name}}</span>
-          <!-- <p class="js-product-desc">{{item.product.description}}</p> -->
-      </div>
-      <div class="medium-2 columns text-right">
-          <p class="text--red js-product-costs">{{item.quantity}} x {{item.product.price | currency:'PLN':true}}</p>
-      </div>
-      <div class="medium-3 columns text-right">
-          <p class="text--bold text--red js-product-total">{{item.amount | currency:'PLN':true}}</p>
-      </div>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4">
+      <h2>
+        <!-- <i class="material-icons">shopping_basket</!-->
+        <span>Zawartość koszyka</span>
+      </h2>
     </div>
-  </div>
-  <div *ngIf="cart" class="medium-4 columns">
-    <h4>Opcje dostawy</h4>
-    <div class="row delivery-option "
-        *ngFor="let option of deliveryOptions">
-        <div class="small-1 columns">
-          <input type="radio"
-                 name="delivery_option"
-                 id="{{option.name}}"
-                 [checked]="option.id === cart.deliveryId"
-                 (click)="setDeliveryOption(option)">
-        </div>
-        <div class="small-9 columns">
-          <label class="text--bold js-option-name" for="{{option.name}}" (click)="setDeliveryOption(option)">{{option.name}}</label>
-        </div>
-        <div class="small-2 columns">
-          <p class="text--bold text--red js-option-price">{{option.price | currency:'PLN':true}}</p>
-        </div>
-        <div class="small-12 columns">
-          <p>{{option.description}}</p>
-        </div>
+    <div *ngIf="cart" class="col-md-4 text-right">
+      <h4>
+        Cała kwota
+        <span class="text-danger font-weight-bold js-gross-total">{{cart.amountTotal | toZloty}}</span>
+      </h4>
     </div>
+    <div *ngIf="cart" class="col-md-4 text-right">
+      <h5 class="text-danger" *ngIf="!cart.deliveryId">Wybierz opcje dostawy</h5>
+      <a><button class="btn btn-success btn-lg" *ngIf="cart.deliveryId" routerLink="/confirmed">Zapłać</button></a>
+    </div>
+    <hr />
   </div>
-
 
   <div class="row">
-    <div class="small-10 columns small-centered">
-      <a class="warning button expanded"
-        routerLink="/">Kontynuuj zakupy</a>
+    <div class="col-md-8">
+      <div class="container">
+        <div class="row" *ngFor="let item of cartItems">
+
+          <div class="col-md-5 text-center">
+            <img [src]="item.product.link" class="product_image" />
+
+          </div>
+          <div class="col-md-2">
+            <span class="font-weight-bold ">{{item.product.name}}</span>
+            <!-- <p class="js-product-desc">{{item.product.description}}</p> -->
+          </div>
+          <div class="col-md-2 text-right">
+            <p class="text-danger ">{{item.quantity}} x {{item.product.price | toZloty}}</p>
+          </div>
+          <div class="col-md-3  text-right">
+            <p class="font-weight-bold text-danger ">{{item.amount | toZloty}}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div *ngIf="cart" class="col-md-4">
+      <h4>Opcje dostawy</h4>
+      <div class="container cd">
+        <div class="row delivery-option " *ngFor="let option of deliveryOptions">
+          <div class="col-sm-1">
+            <input type="radio" name="delivery_option" id="{{option.name}}" [checked]="option.id === cart.deliveryId"
+              (click)="setDeliveryOption(option)">
+          </div>
+          <div class="col-sm-5">
+            <label class="font-weight-bold" for="{{option.name}}"
+              (click)="setDeliveryOption(option)">{{option.name}}</label>
+          </div>
+          <div class="col-sm-3">
+            <p class="font-weight-bold text-danger ">{{option.price | toZloty}}</p>
+          </div>
+          <div class="col-sm-12">
+            <p>{{option.description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+      <a><button class="btn btn-warning mb-3 w-75" routerLink="/">Kontynuuj zakupy</button></a>
     </div>
   </div>
 </div>

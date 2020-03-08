@@ -9,10 +9,6 @@ import { ShoppingCartService } from "../../services/shopping-cart.service";
 import { Observable } from "rxjs/Observable";
 import { Subscription } from "rxjs/Subscription";
 
-// interface ICartItemWithProduct extends CartItem {
-//   product: Product;
-//   totalCost: number;
-// }
 
 @Component({
   selector: "app-checkout",

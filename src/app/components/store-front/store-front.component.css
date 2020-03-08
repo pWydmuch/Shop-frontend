@@ -19,21 +19,34 @@
 .product-container .product_image {
   max-height: 250px;
 }
-
-.product-container   .product_price {
+*/
+/* .product-container   .product_price {
   float: right;
   margin-top: 1rem;
 } */
 
+
+
+.card{
+  margin-left:0px;
+  padding-left:0px;
+}
+
+.container .product_image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/*
 .container{
   border: 3px solid red;
 }
 
-.container .product_image {
-  max-height: 250px;
-}
-
-.container   .product_price {
-  /* float: right; */
+ .container   .product_price {
+ 
   margin-top: 1rem;
 } 
+
+.row > div{
+  border: solid green 1.5px;
+} */

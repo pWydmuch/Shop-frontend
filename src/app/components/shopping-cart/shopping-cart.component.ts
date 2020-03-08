@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, EventEmitter, Output } from "@angular/core";
 import { Product } from "../../models/product.model";
 import { ShoppingCart } from "../../models/shopping-cart.model";
 import { ProductsDataService } from "../../services/products.service";
@@ -16,6 +16,8 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   public cart: ShoppingCart;
   public itemCount: number;
 
+  @Output() onCartEmpted: EventEmitter<any> = new EventEmitter<any>();
+
   private cartSubscription: Subscription;
 
   public constructor(private productsService: ProductsDataService,
@@ -23,15 +25,13 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   public emptyCart(): void {
-    this.shoppingCartService.empty();
+    this.shoppingCartService.empty().subscribe((cart) => {
+      this.doIt(cart);
+    });
   }
 
   public ngOnInit(): void {
     this.productsService.all().subscribe(pr => this.products=pr);
-    // this.cart = this.shoppingCartService.get().su;
-    // this.cartSubscription = this.cart.subscribe((cart) => {
-    //   this.doIt(cart);
-    // });
     this.getCart();
   }
 
@@ -49,6 +49,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   doIt(cart){
+    this.onCartEmpted.emit(cart);
     this.cart = cart.body;
     this.itemCount = this.cart.cartItems.map((x) => x.quantity).reduce((p, n) => p + n, 0);
     console.log(cart);
