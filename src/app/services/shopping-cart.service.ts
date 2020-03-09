@@ -9,6 +9,7 @@ import { ProductsDataService } from "../services/products.service";
 import { HttpClient, HttpHeaders } from '@angular/common/http'; 
 import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable(
   {
@@ -20,7 +21,8 @@ export class ShoppingCartService {
   // private deliveryOptions: DeliveryOption[];
   public cart : ShoppingCart;
 
-  private basicUrl = 'http://localhost:8080';
+  // private basicUrl = 'http://localhost:8080';
+  private basicUrl = environment.basicUrl;
   private sessionId: string = null;
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json',

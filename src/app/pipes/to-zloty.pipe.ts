@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ToZlotyPipe implements PipeTransform {
 
-  transform(value: string, ...args: any[]): string {
+  transform(value: number, ...args: any[]): string {
     return value + ' zł';
   }
 

@@ -3,6 +3,7 @@ import { Product } from "../models/product.model";
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http'; 
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 
 let count = 0;
@@ -21,7 +22,7 @@ export class ProductsDataService{
     
   }
 
-  private url = 'http://localhost:8080/products';
+  private url = `${environment.basicUrl}/products`;
 
   public all(): Observable<Product[]> {
     return this.http.get<Product[]>(this.url).pipe(

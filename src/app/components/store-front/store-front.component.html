@@ -32,10 +32,10 @@
                 </span>
               </p> -->
                 <div *ngIf="cart" class="d-flex justify-content-center mb-3">
-                  <button type="button" class="btn btn-success" (click)="addProductToCart(product, 1)">Dodaj do
+                  <button type="button" class="btn btn-success" (click)="addProductToCart(product)">Dodaj do
                     koszyka</button>
                   <button type="button" class="btn btn-danger btn-sm" *ngIf="productInCart(product)"
-                    (click)="removeProductFromCart(product, 1)">Usuń z koszyka</button>
+                    (click)="removeProductFromCart(product)">Usuń z koszyka</button>
                 </div>
               </div>
             </div>
