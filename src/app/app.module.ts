@@ -11,8 +11,6 @@ import { StoreFrontComponent } from "./components/store-front/store-front.compon
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TranslatePipe } from './pipes/translate.pipe';
-import { LoginComponent } from './components/login/login.component';
-import { LogoutComponent } from './components/logout/logout.component';
 import { ToZlotyPipe } from './pipes/to-zloty.pipe';
 
 @NgModule({
@@ -26,8 +24,6 @@ import { ToZlotyPipe } from './pipes/to-zloty.pipe';
     NavbarComponent,
     FooterComponent,
     TranslatePipe,
-    LoginComponent,
-    LogoutComponent,
     ToZlotyPipe
   ],
   imports: [

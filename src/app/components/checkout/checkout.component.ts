@@ -21,6 +21,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   public cartItems: CartItem[];
   public itemCount: number;
 
+ 
+  
   private products: Product[];
   private cartSubscription: Subscription;
 
@@ -34,43 +36,32 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   }
 
   public setDeliveryOption(option: DeliveryOption): void {
-    this.shoppingCartService.setDeliveryOption(option).subscribe(resp => this.do(resp));
+    console.log(this.cart.deliveryId)
+    this.shoppingCartService.setDeliveryOption(option).subscribe(resp => this.assignCart(resp));
   }
 
-  do(resp){
+  assignCart(resp){
     this.cart = resp.body;
-    console.log(resp);
   }
 
   public ngOnInit(): void {
     this.deliveryOptions = this.deliveryOptionService.all();
-    // this.cart = this.shoppingCartService.get();
     this.shoppingCartService.get().subscribe((resp) => {
-      let cart = resp.body;
-      this.cartItems = cart.cartItems;
       this.cart = resp.body;
-      console.log(this.cart);
-      this.itemCount = cart.cartItems.map((x) => x.quantity).reduce((p, n) => p + n, 0);
+
+      console.log(this.cart.deliveryId)
+      // console.log(cart);
+      this.cartItems = this.cart.cartItems;
+      this.itemCount = this.cart.cartItems.map((x) => x.quantity).reduce((p, n) => p + n, 0);
       this.productsService.all().subscribe((products) => {
         this.products = products;
-       
-                          //  .map((item) => {
-                          //     const product = this.products.find((p) => p.id === item.product.id);
-                          //     return {
-                          //       ...item,
-                          //       product,
-                          //       totalCost: item.amount ,
-                          //       link: item.link};
-                          //  });
       });
-   
-      
-  
     });
     
   }
 
   public ngOnDestroy(): void {
+    this.shoppingCartService.deleteDeliveryOption().subscribe(resp => console.log(resp));
     if (this.cartSubscription) {
       this.cartSubscription.unsubscribe();
     }

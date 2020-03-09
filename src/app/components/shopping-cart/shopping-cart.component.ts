@@ -25,8 +25,8 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   public emptyCart(): void {
-    this.shoppingCartService.empty().subscribe((cart) => {
-      this.doIt(cart);
+    this.shoppingCartService.empty().subscribe((resp) => {
+      this.assignCart(resp);
     });
   }
 
@@ -42,16 +42,14 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   public getCart(){
-    this.shoppingCartService.get().subscribe((cart) => {
-      this.doIt(cart);
+    this.shoppingCartService.get().subscribe((resp) => {
+      this.assignCart(resp);
     });
-    // this.cartSubscription = this.cart
   }
 
-  doIt(cart){
-    this.onCartEmpted.emit(cart);
-    this.cart = cart.body;
+  assignCart(resp){
+    this.onCartEmpted.emit(resp);
+    this.cart = resp.body;
     this.itemCount = this.cart.cartItems.map((x) => x.quantity).reduce((p, n) => p + n, 0);
-    console.log(cart);
   }
 }

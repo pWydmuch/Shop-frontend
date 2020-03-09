@@ -44,29 +44,28 @@ export class ShoppingCartService {
 
  
 
-  public get(): Observable<ShoppingCart> {
-    return this.http.get<ShoppingCart>(`${this.basicUrl}/cart`, this.httpOptions);
+  public get(): Observable<any> {
+    return this.http.get<any>(`${this.basicUrl}/cart`, this.httpOptions);
     // return null;
   }
 
   public addItem(product: Product, quantity: number): Observable<ShoppingCart> {
  
-    let res: Observable<ShoppingCart>  = this.http.get<ShoppingCart>(`${this.basicUrl}/cart/${product.id}`,this.httpOptions ).pipe(
+    return this.http.get<ShoppingCart>(`${this.basicUrl}/cart/${product.id}`,this.httpOptions ).pipe(
       tap(_ => console.log(`posted heroid=${product.id}`)));
 
-    return res;  
   }
   public removeItem(product: Product): Observable<ShoppingCart> {
  
-    let res: Observable<ShoppingCart>  = this.http.delete<ShoppingCart>(`${this.basicUrl}/cart/${product.id}`,this.httpOptions ).pipe(
+    return this.http.delete<ShoppingCart>(`${this.basicUrl}/cart/${product.id}`,this.httpOptions ).pipe(
       tap(_ => console.log(`deleted prod=${product.id}`)));
 
-    return res;  
+
   }
 
-  doSth(){
-    this.setCookie();
-  }
+  // doSth(){
+  //   this.setCookie();
+  // }
 
   setCookie(){
     let ses = localStorage.getItem('JSESSIONID');
@@ -89,8 +88,13 @@ export class ShoppingCartService {
   }
 
   public setDeliveryOption(deliveryOption: DeliveryOption):  Observable<any> {
-    return this.http.put<any>(`${this.basicUrl}/cart/${deliveryOption.id}`,deliveryOption,this.httpOptions ).pipe(
-      tap(_ => console.log(`deleted prod=${deliveryOption.id}`)));
+    return this.http.put<any>(`${this.basicUrl}/cart/delivery/${deliveryOption.id}`,deliveryOption,this.httpOptions ).pipe(
+      tap(_ => console.log(`set delivery=${deliveryOption.id}`)));
+    }
+
+  public deleteDeliveryOption():  Observable<any> {
+    return this.http.delete<any>(`${this.basicUrl}/cart/delivery`,this.httpOptions ).pipe(
+      tap(_ => console.log(`deleted delivery`)));
 
 
   }

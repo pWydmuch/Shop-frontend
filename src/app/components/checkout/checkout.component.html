@@ -18,25 +18,27 @@
     </div>
     <hr />
   </div>
-
   <div class="row">
     <div class="col-md-8">
       <div class="container">
-        <div class="row" *ngFor="let item of cartItems">
+        <div class="card my-2"  *ngFor="let item of cartItems">
+          <div class="row">
 
-          <div class="col-md-5 text-center">
-            <img [src]="item.product.link" class="product_image" />
+            <div class="col-md-5 text-center pl-1">
+              <img [src]="item.product.link" class="product_image" />
 
-          </div>
-          <div class="col-md-2">
-            <span class="font-weight-bold ">{{item.product.name}}</span>
-            <!-- <p class="js-product-desc">{{item.product.description}}</p> -->
-          </div>
-          <div class="col-md-2 text-right">
-            <p class="text-danger ">{{item.quantity}} x {{item.product.price | toZloty}}</p>
-          </div>
-          <div class="col-md-3  text-right">
-            <p class="font-weight-bold text-danger ">{{item.amount | toZloty}}</p>
+            </div>
+            <div class="col-md-2 mx-2">
+              <span class="font-weight-bold">{{item.product.name}}</span>
+              <!-- <p class="js-product-desc">{{item.product.description}}</p> -->
+            </div>
+            <div class="col-md-2 mx-2 text-right">
+              <p class="text-danger ">{{item.quantity}} x {{item.product.price | toZloty}}</p>
+            </div>
+            <div class="col-md-2 mx-2 text-right">
+              <p class="font-weight-bold text-danger ">{{item.amount | toZloty}}</p>
+            </div>
+
           </div>
         </div>
       </div>
@@ -47,12 +49,11 @@
       <div class="container cd">
         <div class="row delivery-option " *ngFor="let option of deliveryOptions">
           <div class="col-sm-1">
-            <input type="radio" name="delivery_option" id="{{option.name}}" [checked]="option.id === cart.deliveryId"
+            <input  type="radio" name="delivery_option" id="{{option.name}}"  value="{{option.id}}"
               (click)="setDeliveryOption(option)">
           </div>
           <div class="col-sm-5">
-            <label class="font-weight-bold" for="{{option.name}}"
-              (click)="setDeliveryOption(option)">{{option.name}}</label>
+            <label class="font-weight-bold" for="{{option.name}}">{{option.name}}</label>
           </div>
           <div class="col-sm-3">
             <p class="font-weight-bold text-danger ">{{option.price | toZloty}}</p>

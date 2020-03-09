@@ -1,32 +1,3 @@
-/* .product-list {
-  list-style-type: none;
-  margin: 0;
-}
-
-.product-container {
-
-    padding: 2rem 3rem 0 0;
-    position: relative;
-    border: 3px solid red;
-    margin: 10px 0;
-
-}
-
-.product-container:hover {
-  box-shadow: 0 0 5px rgba(50,50,50,0.3);
-}
-
-.product-container .product_image {
-  max-height: 250px;
-}
-*/
-/* .product-container   .product_price {
-  float: right;
-  margin-top: 1rem;
-} */
-
-
-
 .card{
   margin-left:0px;
   padding-left:0px;
@@ -37,16 +8,3 @@
   max-height: 100%;
 }
 
-/*
-.container{
-  border: 3px solid red;
-}
-
- .container   .product_price {
- 
-  margin-top: 1rem;
-} 
-
-.row > div{
-  border: solid green 1.5px;
-} */

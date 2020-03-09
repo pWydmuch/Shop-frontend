@@ -14,7 +14,8 @@ export class PopulatedCartGuard implements CanActivate {
       return new Observable<boolean>((observer: Observer<boolean>) => {
         const cartSubscription = this.shoppingCartService
                                     .get()
-                                    .subscribe((resp) => {
+                                    .subscribe(resp => {
+                                      // console.log(cart);
                                       let cart = resp.body;
                                         if (cart.cartItems.length === 0) {
                                           observer.next(false);

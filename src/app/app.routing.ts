@@ -5,10 +5,8 @@ import { CheckoutComponent } from "./components/checkout/checkout.component";
 import { OrderConfirmationComponent } from "./components/order-confirmation/order-confirmation.component";
 import { StoreFrontComponent } from "./components/store-front/store-front.component";
 
-import { LoginComponent } from './components/login/login.component';
-import { LogoutComponent } from './components/logout/logout.component';
 import { PopulatedCartGuard } from './route-guards/populated-cart.guard';
-import { AuthGuard } from './route-guards/auth.guard';
+
 
 @NgModule({
     exports: [RouterModule],
@@ -18,15 +16,6 @@ import { AuthGuard } from './route-guards/auth.guard';
                 redirectTo: "/main",
                 path: "" ,
                 pathMatch: "full"
-            },
-            {
-                component: LoginComponent,
-                path: "login" 
-            },
-            {
-                component: LogoutComponent,
-                path: "logout" ,
-                canActivate:[AuthGuard]
             },
             {
                 canActivate: [PopulatedCartGuard],
@@ -41,7 +30,6 @@ import { AuthGuard } from './route-guards/auth.guard';
             {
                 component: StoreFrontComponent,
                 path: "main",
-                // canActivate:[AuthGuard]
             }])
     ]
 })
